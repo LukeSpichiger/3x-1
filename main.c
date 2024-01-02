@@ -4,18 +4,20 @@
 #include <time.h>
 
 #define MAX_ITERATIONS 1000000
-#define HIGHEST_NUMBER 10
+#define HIGHEST_NUMBER 1000000
 
 int Collatz(int number);
 int GetRandomNumber(int min, int max);
 
 int main(int argc, char *argv[]) {
   int number_array[HIGHEST_NUMBER];
+  int original_array[HIGHEST_NUMBER];
   bool dataset_grade = true;
   printf("3x+1 PROGRAMM!\n\n");
   printf("Generating Numbers:\n");
   for (size_t i = 0; i < HIGHEST_NUMBER; i++) {
     number_array[i] = i + 1;
+    original_array[i] = i + 1;
   }
   printf("Done!\n\n");
   printf("Calculating Data:\n");
@@ -26,13 +28,14 @@ int main(int argc, char *argv[]) {
   printf("Done!\n\n");
   printf("Printing Data:\n");
   for (size_t i = 0; i < HIGHEST_NUMBER; i++) {
-    printf("%d\n", number_array[i]);
+    printf("%d: %d\n", original_array[i], number_array[i]);
   }
   printf("Done!\n\n");
   printf("Judging Data:\n");
   for (size_t i = 0; i < HIGHEST_NUMBER; i++) {
     if (number_array[i] != 1) {
-      printf("ANOMALY FOUND!\n");
+      printf("ANOMALY FOUND AT: %d RESULT: %d\n", original_array[i],
+             number_array[i]);
       dataset_grade = 0;
     }
   }
